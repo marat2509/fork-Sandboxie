@@ -471,23 +471,6 @@ NTSTATUS KphVerifyCurrentProcess();
 
 _FX BOOLEAN MyIsCallerSigned(void)
 {
-    NTSTATUS status;
-
-    // in test signing mode don't verify the signature
-    if (Driver_OsTestSigning)
-        return TRUE;
-
-    status = KphVerifyCurrentProcess();
-
-    //DbgPrint("Image Signature Verification result: 0x%08x\r\n", status);
-
-    if (!NT_SUCCESS(status)) {
-
-        //Log_Status(MSG_1330, 0, status);
-
-        return FALSE;
-    }
-
     return TRUE;
 }
 
